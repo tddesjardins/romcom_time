@@ -19,7 +19,9 @@ where `{time}` is a string of particular format and `{time_system}` is one of:
 - UTC
 - DOY
 - MET 
-DOY is day of year and MET is mission elapsed time since launch. The EASTERN option naturally updates with daylight savings time. Before November 1, 2026 02:00 AM it will be EDT and then it will transition to EST.
+DOY is day of year and MET is mission elapsed time since launch.
+
+The EASTERN option naturally updates with daylight savings time. Before November 1, 2026 02:00 AM it will be EDT and then it will transition to EST.
 
 The format of `{time}` depends on the input:
 - EASTERN & UTC = ISOT string (e.g., YYYY-MM-DDTHH:MM:SS)
