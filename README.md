@@ -2,17 +2,17 @@
 
 To install, clone the repo and install with
 
-> pip install -e .
+`pip install -e .`
 
 Or you can do
 
-> pip install git+https://github.com/tddesjardins/romcom_time
+`pip install git+https://github.com/tddesjardins/romcom_time`
 
 # Usage
 
 To convert times, at the command line type:
 
-> tcomm {time} {time_system}
+`tcomm {time} {time_system}`
 
 where `{time}` is a string of particular format and `{time_system}` is one of:
 - EASTERN
@@ -28,7 +28,7 @@ The format of `{time}` depends on the input:
 
 Example: 
 
-> tcomm 257/05:00:00 DOY
+`tcomm 257/05:00:00 DOY`
 
 Returns:
 ```
