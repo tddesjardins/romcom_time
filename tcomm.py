@@ -13,13 +13,13 @@ def calc_met(input_utc):
 
 
 def main():
-    types = ['EDT', 'UTC', 'MET', 'DOY']
-    parser = argparse.ArgumentParser(description="Convert between EDT, UTC, MET, and DOY")
+    types = ['EASTERN', 'UTC', 'MET', 'DOY']
+    parser = argparse.ArgumentParser(description="Convert between EASTERN, UTC, MET, and DOY")
     parser.add_argument("input_time", help="Input time to be converted")
     parser.add_argument("input_format", choices=types, help="Format of the input time")
     args = parser.parse_args()
 
-    if args.input_format == 'EDT':
+    if args.input_format == 'EASTERN':
         input_edt = datetime.fromisoformat(args.input_time).replace(tzinfo=NY)
         input_utc = input_edt.astimezone(UTC)
 
@@ -50,7 +50,11 @@ def main():
     doy_hours, remainder = divmod(doy_seconds, 3600)
     doy_minutes, doy_seconds = divmod(remainder, 60)
 
-    print(f"EDT: {input_edt.replace(tzinfo=None).isoformat()}")
+    # Check if the eastern time is EDT or EST based on the date and time
+    if input_edt.dst() != timedelta(0):
+        print(f"EASTERN (EDT): {input_edt.replace(tzinfo=None).isoformat()}")
+    else:
+        print(f"EASTERN (EST): {input_edt.replace(tzinfo=None).isoformat()}")
     print(f"UTC: {input_utc.replace(tzinfo=None).isoformat()}")
     print(f"MET: {input_met:.2f}")
     print(f"DOY (UTC): {doy_day}/{doy_hours:02}:{doy_minutes:02}:{doy_seconds:02}")
